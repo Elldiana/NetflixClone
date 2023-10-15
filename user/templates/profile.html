@@ -1,0 +1,51 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+
+{% block css %}
+    <style>
+        body{
+           background-color: rgb(50, 50, 50) !important; 
+        }
+        header{
+            height: 700px;
+        }
+    </style>
+{% endblock css %}
+
+{% block content %}
+
+<header class="position-relative">
+    <div class="position-absolute ortala text-white text-center ">
+        <div class='d-flex gap-2'>
+
+            {% for i in request.user.profile_set.all %}
+                <div class="card bg-transparent border-0 text-white">
+                    <a href="{% url "filmlerPage" i.id %}" class='text-decoration-none text-white'>
+                        <img src="{{i.image.url}}" height='200' width='200' alt="">
+                        <p class='fs-4'>{{i.name}}</p>
+                    </a>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name='idSil' value ='{{i.id}}' hidden>
+                        <input type="submit" value="Sil">
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+       
+        
+        
+            {% csrf_token %}
+            {% if request.user.profilleri_say == 5 %}
+            <a class='btn btn-outline-light disabled'  > Profil yönetimi</a>
+            {% else %}
+            <a class='btn btn-outline-light' href="{% url "managePage" request.user %}"  > Profil yönetimi</a>
+            {% endif %}
+            
+        
+    </div>
+</header>   
+
+{% endblock content %}

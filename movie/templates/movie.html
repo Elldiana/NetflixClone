@@ -1,0 +1,22 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block css %}
+    <style>
+        
+        video{
+            position: fixed;
+            width: 100% ;
+            height: 100vh;
+            object-fit: cover;
+            
+            
+        }
+    </style>
+{% endblock css %}
+
+{% block content %}
+
+    <video src="{{movie.video.url}}" class="w-100"  controls   ></video>
+
+{% endblock content %}

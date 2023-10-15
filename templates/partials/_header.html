@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="container orta d-flex position-absolute z-1  m-auto justify-content-between align-items-center">
+    <a href="{% url "indexPage" %}">
+        <img src="{% static "img/netflix_logo.png" %}" alt="">
+    </a>
+    <div class="d-flex align-items-center gap-3 position-relative">
+        <select class="select-icin text-end fs-5 bg-transparent text-white media">
+            <option>Türkçe</option>
+            <option>English</option>
+        </select>
+        <i class="fa-solid text-white fa-globe position-absolute yerlestir z-3"></i>
+        <a href="{% url "profilePage" %}" class="btn oturum btn-danger p-0 fw-bold">Oturum Aç</a>
+    </div>
+</nav>
+{% if request.path == '/' %}
+    <header class="position-relative head">
+        <div class="position-absolute ortala text-white text-center">
+            <h1>Sınırsız film, dizi ve çok daha fazlası</h1>
+            <p>İstediğiniz yerde izleyin. İstediğiniz zaman iptal edin.</p>
+            <p>İzlemeye hazır mısınız? Üye olmak ya da hesabınıza tekrar ulaşmak için tek yapmanız gereken e-posta adresinizi girmek.</p>
+
+            <div class="d-flex gap-3">
+                <input type="text" placeholder="E-posta adresi" class="bg-transparent text-white p-3 form-control w-75">
+                <button class="btn btn-danger p-3">Başlayın ></button>
+            </div>
+        </div>
+    </header>
+{% else %}
+<header class="position-relative head">
+    <div class="position-absolute ortala text-white text-center">
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                {{field.errors}}
+                <label for="{{field.id_for_label}}">{{field.label}}</label>
+                {{field}}
+            {% endfor %}
+            {% if request.path == '/login/' %}
+                <input class = 'btn btn-danger mt-2' type="submit" value="Giris Yap">
+            {% elif request.path == '/register/' %}
+                <input class = 'btn btn-danger mt-2' type="submit" value="Kayıt Ol">
+            {% endif %}
+            
+        </form>
+    </div>
+</header>
+
+{% endif %}

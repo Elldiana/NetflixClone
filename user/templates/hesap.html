@@ -1,0 +1,99 @@
+{% extends "partials/base.html" %}
+
+{% block css %}
+
+<style>
+    body, html {
+        color: black;
+        background-color: beige;
+    }
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .container {
+        margin-top: 100px;
+    }
+    .accordion, .panel {
+        background-color: rgba(34, 34, 34, 0);
+        color: black;
+    }
+</style>
+
+{% endblock css %}
+
+{% block content %}
+
+{% include "partials/_navbar.html" %}
+
+<!-- Hesap -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row">
+                <h1>Hesap</h1>
+                <hr>
+                <div class="col">
+                    <h4>Üyelik ve Ödemeler</h4>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Üyeliği iptal et">
+                    </form>
+                </div>
+                <div class="col">
+                    <h6>{{request.user.full_name}} </h6>
+                    <strong>{{request.user.email}}</strong>
+                    <p>Parola:*******</p>
+                    <p>{{request.user.phone}}</p>
+                </div>
+                <div class="col">
+                    <a href="">E-postayi değiştir</a> <br>
+                    <a href="">Parolayı değiştir</a> <br>
+                    <a href="">Telefon numarasını değiştir</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <hr>
+                <div class="col">
+                    <h4>Ayarlar</h4>
+                </div>
+
+                <div class="col">
+                    <a href="">18+ İçerik</a> <br>
+                    <a href="">Teste katılın</a> <br>
+                    <a href="">İçerik indirilen cihazları yönet</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <hr>
+                <div class="col">
+                    <h4>Profil ve ebeveyn kontrolleri</h4>
+                </div>
+
+                <div class="col">
+                    <button class="accordion"><img src="img/smile-profil.png" alt=""> isim</button>
+                    <div class="panel">
+                        <p>
+                            <strong>Dil</strong> <br>
+                            <a href="" class="text-end">Değiştir</a>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>İzleme Kısıtlamaları</strong> <br>
+                            <a href="" class="text-end">Değiştir</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% include "partials/_footer.html" %}
+{% endblock content %}

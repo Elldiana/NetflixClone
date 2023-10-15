@@ -1,0 +1,75 @@
+.select-icin{
+    width: 126px;
+    height: 32px;
+}
+.oturum{
+    width: 126px;
+    height: 32px;
+}
+.yerlestir{
+    top: 8px;
+    left: 10px;
+}
+.head{
+    height: 700px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%), url(../img/arkaplan.jpg);
+    
+}
+.ortala{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.orta{
+    left: 50%;
+    transform: translateX(-50%);
+}
+input::placeholder{
+    color: white !important;
+}
+.cizgi{
+    width: 100%;
+    margin: 0;
+    border: 4px solid rgb(63, 63, 63) !important;
+}
+.acil{
+    height: 70px;
+    font-size: 25px;
+    background-color: #2D2D2D;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+.acil:hover{
+    background-color: #5b5b5b
+}
+.acilmis{
+    border-top: 1px solid black;
+    font-size: 25px;
+    background-color: #2D2D2D;
+    padding: 10px;
+    color: white;
+    display: none;
+}
+.goster{
+    display: block;
+}
+.dondur{
+    transform: rotate(45deg);
+}
+footer li a{
+    color: white;
+}
+footer li {
+   margin-bottom:10px ;
+   list-style-type: none;
+
+}
+
+@media screen and (max-width:500px) {
+    .media{
+        width: 50px;
+        
+    }
+}

@@ -1,0 +1,58 @@
+{% extends "partials/base.html" %}
+
+
+{% block css %}
+    <style>
+        body{
+            background-color:black !important;
+            
+        }
+    </style>
+{% endblock css %}
+
+{% block content %}
+
+{% load static %}
+ {% include "partials/_navbar.html" %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+
+        
+
+            <div class="col-12">
+                <h3 class='text-white my-3'>Önerilen filmler</h3>
+            </div>
+
+           
+            {% for i in filmler %}
+        
+               <div class="col-3">
+                    <div class="card  rounded-2 bg-transparent text-white fs-5 text-center">
+                        <a href="{% url "moviePage" i.slug %}" class='text-white text-decoration-none'>
+                            <img src="{{i.image.url}}" class='rounded-2 w-100' alt="">
+                            <p class='bg-transparent'>{{i.title}}</p>
+                        </a>
+                    </div>  
+               </div> 
+        
+            {% endfor %}
+
+            <div class="col-12">
+                <h3 class='text-white my-3'>Korku filmleri</h3>
+            </div>
+
+            {% for i in korku %}
+                <div class="col-3">
+                    <div class="card rounded-2 bg-transparent text-white fs-5 text-center">
+                        <img src="{{i.image.url}}" class='rounded-2 w-100' alt="">
+                        <p>{{i.title}}</p>
+                    </div>  
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
